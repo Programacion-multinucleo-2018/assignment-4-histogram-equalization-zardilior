@@ -34,7 +34,7 @@ int main(int argc,char ** argv){
 
     return 0;
 }
-int * cpuHistogram(cv::Mat input){
+int * cpuHistogramFromImage(cv::Mat input){
     // allocate histogram
     int * histogram = calloc(256,sizeof(int));
     // for each pixel 
@@ -47,6 +47,6 @@ int * cpuHistogram(cv::Mat input){
     }
     return histogram;
 }
-int * gpuHistogram(cv::Mat input){
+int * gpuHistogramFromImage(cv::Mat input){
 
 }
