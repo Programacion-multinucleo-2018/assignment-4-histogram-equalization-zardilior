@@ -204,11 +204,17 @@ void gpuMapImageWithHistogram(cv::Mat input,cv::Mat output,int * histogram){
     cudaFree(d_histogram);
 }
 __global__ void gpuMapImageWithHistogramKernel(unsigned char* input,unsigned char* output, int * histogram, int width, int height, int step){
+    __shared__ int * shHistogram;
+    for(int i = 0;i<256;i++){
+        shHistogram[i] = histogram[i];
+    }
+    __syncthreads();
+
     const int xIndex = blockIdx.x * blockDim.x + threadIdx.x;
     const int yIndex = blockIdx.y * blockDim.y + threadIdx.y;
 
     if ((xIndex < width) && (yIndex < height)){
         const int tid = yIndex * step + xIndex; 
-        output[tid] =static_cast<unsigned char>(histogram[input[tid]]);
+        output[tid] =static_cast<unsigned char>(shHistogram[input[tid]]);
     }
 }
