@@ -49,6 +49,10 @@ int main(int argc,char ** argv){
     cv::namedWindow("OutputCPU",CV_WINDOW_NORMAL);
     cv::namedWindow("OutputGPU",CV_WINDOW_NORMAL);
 
+    cv::resizeWindow("Input", 800, 600);
+    cv::resizeWindow("OutputCPU", 800, 600);
+    cv::resizeWindow("OutputGPU", 800, 600);
+
     cv::imshow("Input",input);
     cv::imshow("OutputCPU",output);
     cv::imshow("OutputGPU",output2);

@@ -25,4 +25,10 @@ Rubric:
 6. Both images are displayed at the end.
 7. Calculation times and speedup obtained are incuded in the Readme.
 
+**NOTES**
+
+1. Missing kernels.
+2. Incorrect use of shared memory.
+
+**Grade: 70**
 # Results
